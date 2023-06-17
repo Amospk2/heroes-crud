@@ -1,0 +1,139 @@
+Sr. No.,Rank,Class,Name,Gender,Abilities
+1,S-1,S-Class,Blast ,Male,"['Superhuman Physical Prowess', 'Portal Creation', 'Gravity Manipulation']"
+2,S-2,S-Class,Tatsumaki ,Female,['Psychokinesis']
+3,S-3,S-Class,Silver Fang,Male,"['Superhuman Physical Prowess', 'Master Martial Artist']"
+4,S-4,S-Class,Atomic Samurai,Male,"['Superhuman Physical Prowess', 'Master Swordsmanship']"
+5,S-5,S-Class,Child Emperor,Male,['Genius Intellect']
+6,S-6,S-Class,Metal Knight,Male,['Genius Intellect']
+7,S-7,S-Class,King,Male,"['Extreme Luck', 'Master Gamer', 'Intimidating Aura']"
+8,S-8,S-Class,Zombieman,Male,['Regeneration']
+9,S-9,S-Class,Drive Knight,Male,"['Superhuman Physical Characteristics', 'Transformation Flight', 'Fire Manipulation', 'Energy Projection']"
+10,S-10,S-Class,Pig God,Male,"['Superhuman Physical Prowess', 'Inhuman Digestive System Elasticity']"
+11,S-11,S-Class,Supperalloy Darkshine,Male,"['Superhuman Physical Prowess', 'Master Hand-to-Hand Combatant']"
+12,S-12,S-Class,Watchdog Man,Male,"['Superhuman Physical Prowess', 'Dog Attributes']"
+13,S-13,S-Class,Flashy flash,Male,"['Superhuman Speed and Agility', 'Master Swordsman', 'Ninjutsu Master', 'Afterimage Creation', 'Skilled Hand-to-Hand Combatant', 'Air Manipulation']"
+14,S-14,S-Class,Genos,Male,"[Full Cyborg Weaponry, 'Flight', 'Fire Manipulation', 'Electricity Manipulation', 'Energy Projection', 'Self Destruction', 'Highly Skilled and Strategic Combatant']"
+15,S-15,S-Class,Metal Bat,Male,"['Superhuman Physical Prowess', 'Fighting Spirit', 'Healing Factor', 'Indomitable Will']"
+16,S-16,S-Class,Tanktop Master,Male,"['Superhuman Physical Prowess', 'Expert Marksmanship']"
+17,S-17,S-Class,Puri-Puri Prisoner,Male,"['Superhuman Physical Prowess', 'Healing Factor']"
+18,A-1,A-Class,Amai Mask,Male,"['Superhuman Physical Prowess', 'Regeneration', 'Transformation']"
+19,A-2,A-Class,Iaian,Male,"['Superhuman Speed', 'Superhuman Strength', 'Expert Swordsman']"
+20,A-3,A-Class,Okamaitachi,Female,['Expert Swordsman']
+21,A-4,A-Class,Bushidrill,Male,"['Superhuman Strength', 'Superhuman Speed', 'Skilled Swordsman']"
+22,A-5,A-Class,Heavy Tank Loincloth,Male,"['Enhanced Strength', 'Enhanced Speed']"
+23,A-6,A-Class,Blue fire,Male,['Fire Manipulation']
+24,A-7,A-Class,Magic Trick Man,Male,['Magic Tricks']
+25,A-8,A-Class,Death Gatling,Male,"['Enhanced Strength', 'Enhanced Stamina']"
+26,A-9,A-Class,Tanktop Vegetarian ,Male,['Enhanced Strength']
+27,A-10,A-Class,Stinger,Male,"['Superhuman Physical Prowess', 'Expert Spearman']"
+28,A-11,A-Class,Twin Tail,Female,['Juggling']
+29,A-13,A-Class,Great Philosopher,Male,['Enhanced Strength']
+30,A-16,A-Class,Butterfly DX,Male,['Flight']
+31,A-17,A-Class,Lightning Genji,Male,"['Speed', 'Strength']"
+32,A-19,A-Class,Lightning Max,Male,"['Martial Artist', 'Enhanced Speed']"
+33,A-22,A-Class,One Shotter,Male,['Marksmanship']
+34,A-24,A-Class,Green,Male,['Plant Manipulation']
+35,A-25,A-Class,Crescent Eyebroll,Male,"['Speed', 'Enhanced Reflexes']"
+36,A-26,A-Class,Golden Ball,Male,['Sharpshooting']
+37,A-27,A-Class,Smile Man,Male,['Durability']
+38,A-28,A-Class,Spring Mustachio,Male,['Superhuman Speed Swordsmanship']
+39,A-29,A-Class,Narcissistoic,Male,['Enhanced Strength']
+40,A-30,A-Class,Peach Terry ,Male,['Skilled Swordsman']
+41,A-31,A-Class,Forte,Male,['Rhythm Fighting']
+42,A-32,A-Class,Shadow Ring,Female,"['Enhanced Speed', 'Enhanced Reflexes']"
+43,A-33,A-Class,Doll Master,Male,['Puppetry']
+44,A-34,A-Class,Feather,Male,['Speed']
+45,A-35,A-Class,Air,Male,['Marksmanship']
+46,A-36,A-Class,Chain'n'toad,Male,['Reflexes']
+47,A-37,A-Class,Sneck,Male,['Skilled Martial Artist']
+48,A-39,A-Class,Saitama,Male,"['Unparalleled Physical Prowess', 'Supernatural Reflexes and Senses', 'Invulnerability', 'Indomitable Will', 'Accelerated Development', 'Afterimage Creation', 'Shockwave Generation', 'Non-Physical Interaction', 'Technique Mimicry', 'Time Travel']"
+49,???,A-Class,Heavy Kong,Male,['Strength']
+50,B-1,B-Class,Blizzard of Hell,Female,['Psychokinesis']
+51,B-2,B-Class,Eyelashes,Male,
+52,B-3,B-Class,Mountain Ape,Male,
+53,B-6,B-Class,Wild Horn ,Male,
+54,B-20,B-Class,Glasses,Male,
+55,B-25,B-Class,Pink Hornet,Female,
+56,B-29,B-Class,Double Hole,Male,
+57,B-39,B-Class,Smell Master,Male,
+58,B-43,B-Class,Gun Gun,Male,
+59,B-49,B-Class,Butcher,Male,
+60,B-50,B-Class,Jet Nice Guy,Male,
+61,B-60,B-Class,Needle Star,Male,
+62,B-65,B-Class,Piko,Male,
+63,B-69,B-Class,Crying Man,Male,
+64,B-70,B-Class,Trap Tengu,Male,
+65,B-71,B-Class,Captain Mizuki,Female,
+66,B-74,B-Class,Lily of the Three Section Staff,Female,
+67,B-77,B-Class,Bone,Male,
+68,B-81,B-Class,Tanktop Black Hole,Male,
+69,B-93,B-Class,Mushroom,Female,
+70,B-99,B-Class,Shooter,Female,
+71,???,B-Class,Darkness Blade,Male,
+72,???,B-Class,Pineapple ,Male,
+73,???,B-Class,Reclusamurai,Male,
+74,C-1,C-Class,Mumen Rider,Male,
+75,C-3,C-Class,Strange Binding Shell,Male,
+76,C-13,C-Class,Tanktop Tiger,Male,
+77,C-22,C-Class,D-Pad,Male,
+78,C-40,C-Class,Funeral Suspenders,Male,
+79,C-66,C-Class,Food Battler Futoshi,Male,
+80,C-85,C-Class,Battery Man,Male,
+81,C-89,C-Class,Red Muffler,Male,
+82,C-111,C-Class,Armored Chief Clerk,Male,
+83,C-133,C-Class,Gearspear,Male,
+84,C-141,C-Class,Skunk Boy Gasmask,Male,
+85,C-174,C-Class,Grave Eight,Male,
+86,C-179,C-Class,Ecolo G,Male,
+87,C-203,C-Class,Monocross,Male,
+88,C-221,C-Class,Dynamite Man,Male,
+89,C-255,C-Class,Angry Man,Male,
+90,C-283,C-Class,Horse-Bone,Male,
+91,C-295,C-Class,Studless,Male,
+92,C-300,C-Class,Poison,Male,
+93,C-331,C-Class,Bunbun Man,Male,
+94,C-347,C-Class,Hyottoko,Male,
+95,C-359,C-Class,Saturn Man,Male,
+96,C-385,C-Class,Red Nose,Male,
+97,???,C-Class,Ironet,Male,
+98,???,C-Class,Lecture Man,Male,
+99,???,C-Class,Meat Pounder,Male,
+100,???,C-Class,Mohican,Male,
+101,???,C-Class,Rabbit,Male,
+102,???,C-Class,Shoulderpads,Male,
+103,???,C-Class,Swim,Female,
+104,???,C-Class,Water Gun,Male,
+105,???,Unknown,Custom Hero,Male,
+106,???,Unknown,Gunma,Male,
+107,???,Unknown,Pandaman,Male,
+108,???,Unknown,Tanktop Al Dente,Male,
+109,???,Unknown,Tanktop Doctor ,Male,
+110,???,Unknown,Tanktop Girl,Female,
+111,???,Unknown,Tanktop Hatter,Male,
+112,???,Unknown,Tanktop Jungle,Male,
+113,???,Unknown,Tanktop Mask,Male,
+114,???,Unknown,Tanktop Racer,Male,
+115,???,Unknown,Tanktop Rockabilly,Male,
+116,???,Unknown,Tanktop Swimmer,Male,
+117,???,Retired,All Back-Man,Male,
+118,???,Retired,Grad School Graduate,Male,
+119,???,Staff,Agoni,Male,
+120,???,Staff,Busho,Male,
+121,???,Staff,Jinzuren,Male,
+122,???,Staff,C Branch Operator,Female,
+123,???,Staff,C Branch Worker ,Male,
+124,???,Staff,Console Operator,Female,
+125,???,Staff,Exma ,Female,
+126,???,Staff,Guiches,Male,
+127,???,Staff,Main Branch Operator,Female,
+128,???,Staff,McCoy,Male,
+129,???,Staff,Narinki,Male,
+130,???,Staff,Sekingar,Male,
+131,???,Staff,Shelter Nr.7 Girl,Female,
+132,???,Staff,Sitch,Male,
+133,???,Staff,Some Important Guy,Male,
+134,???,Staff,Special Committee Girl,Female,
+135,???,Staff,Shizuka,Female,
+136,???,Staff,Zeimeet,Male,
+137,???,Staff,Z Branch Committee Girl,Female,
+138,???,Staff,Z Branch Operator,Female,

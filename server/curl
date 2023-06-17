@@ -1,0 +1,7 @@
+curl -i -X GET http://127.0.0.1:3000/tables -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJpZCI6MSwibWV0YWRhdGEiOm51bGwsIm5hbWUiOiJwUkVTVCBGdWxsIE5hbWUiLCJ1c2VybmFtZSI6InByZXN0In0sImV4cCI6MTY4MTQ0MjgwMywibmJmIjoxNjgxNDIxMjAzfQ._GvfkhfObJ1I-aFXYxGjFjOVR0rzBaZOUzEiesR5rFo"
+
+curl -i -X POST http://127.0.0.1:3000/auth -H "Content-Type: application/json" -d '{"username": "prest", "password": "prest"}'
+
+curl -i -X GET http://127.0.0.1:3000/databases -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJpZCI6MSwibWV0YWRhdGEiOm51bGwsIm5hbWUiOiJyb290IiwidXNlcm5hbWUiOiJyb290In0sImV4cCI6MTY4NzA0MDEwMywibmJmIjoxNjg3MDE4NTAzfQ.n0bmEVhKb65wTrMS0dI_33h_qN20EzC9JjRTyUYLJOQ"
+
+curl -i -X POST http://127.0.0.1:3000/auth -H "Content-Type: application/json" -d '{"username": "root", "password": "password"}'

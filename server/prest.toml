@@ -1,0 +1,12 @@
+debug=true
+
+[pg]
+url="postgres://prest:prest@172.17.0.1:5432/prest"
+
+[ssl]
+mode="disable"
+
+[cors]
+alloworigin=["*"]
+allowheaders=["Content-Type","authorization"]
+allowmethods=["GET","DELETE","POST","PUT","PATCH","OPTIONS"]
