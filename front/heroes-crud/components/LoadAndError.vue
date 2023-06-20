@@ -17,7 +17,7 @@ defineProps({
                         mdi-alert
                     </v-icon>
                     <br>
-                    <span style="color: white;">Não foi possível carregar as informações desse card</span>
+                    <span style="color: white;">Não foi possível carregar as informações!</span>
                 </v-col>
             </template>
 
