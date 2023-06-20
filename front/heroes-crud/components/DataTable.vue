@@ -86,8 +86,14 @@ function deleteItem(item) {
     dialogDelete.value = true
 }
 
-function deleteItemConfirm() {
+async function deleteItemConfirm() {
     items.value.splice(editedIndex.value, 1)
+
+    await useFetch(`${config.public.API_URL}/prest/public/heroes?Name=${editedItem.value['Name']}`,
+        {
+            method: 'DELETE',
+        })
+    getPageCount()
     closeDelete()
 }
 
@@ -133,6 +139,7 @@ async function loadItems({ page, itemsPerPage }) {
             loading.value = false
             items.value = value
         })
+    getPageCount()
 
 }
 
@@ -158,7 +165,7 @@ async function loadItems({ page, itemsPerPage }) {
                                 New Item
                             </v-btn>
                             <v-text-field v-model="name" hide-details placeholder="Search name..." class="ma-2"
-                            density="compact"></v-text-field>
+                                density="compact"></v-text-field>
 
                         </template>
                         <v-card>
