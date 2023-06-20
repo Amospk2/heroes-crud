@@ -40,7 +40,6 @@ const formTitle = computed(() => {
 })
 
 async function initialize() {
-
     items.value = await $fetch(`${config.public.API_URL}/prest/public/heroes?_page=1`,
         { headers: { Authorization: `Bearer ${config.public.API_TOKEN}` } }).catch((err) => {
             error.value = true
@@ -115,6 +114,7 @@ async function save() {
 
                 }
             }).then(data => {
+
                 if (!data.error.value) {
                     items.value.push(editedItem.value)
                 }
@@ -133,6 +133,7 @@ async function loadItems({ page, itemsPerPage }) {
             loading.value = false
             items.value = value
         })
+
 }
 
 
@@ -144,6 +145,7 @@ async function loadItems({ page, itemsPerPage }) {
         <v-data-table-server :headers="headers" :items-length="pageCount" v-model:items-per-page="itemsPerPage"
             :items="items" :search="search" item-value="name" @update:options="loadItems" :loading="loading"
             :sort-by="[{ key: 'Sr. No.', order: 'asc' }]" class="elevation-1">
+
             <template v-slot:top>
 
                 <v-toolbar flat>
@@ -157,6 +159,7 @@ async function loadItems({ page, itemsPerPage }) {
                             </v-btn>
                             <v-text-field v-model="name" hide-details placeholder="Search name..." class="ma-2"
                             density="compact"></v-text-field>
+
                         </template>
                         <v-card>
                             <v-card-title>
