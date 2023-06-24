@@ -1,4 +1,4 @@
-Sr. No.,Rank,Class,Name,Gender,Abilities
+HeroID,Rank,Class,Name,Gender,Abilities
 1,S-1,S-Class,Blast ,Male,"['Superhuman Physical Prowess', 'Portal Creation', 'Gravity Manipulation']"
 2,S-2,S-Class,Tatsumaki ,Female,['Psychokinesis']
 3,S-3,S-Class,Silver Fang,Male,"['Superhuman Physical Prowess', 'Master Martial Artist']"

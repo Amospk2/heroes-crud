@@ -10,7 +10,7 @@ const itemsPerPage = ref(10)
 const dialog = ref(false)
 const dialogDelete = ref(false)
 const headers = ref([
-    { title: 'Sr. No.', align: 'start', sortable: false, key: 'Sr. No.' },
+    { title: 'HeroID', align: 'start', sortable: false, key: 'HeroID' },
     { title: 'Name', key: 'Name' },
     { title: 'Gender', key: 'Gender' },
     { title: 'Rank', key: 'Rank' },
@@ -22,17 +22,17 @@ const items = ref([])
 const editedIndex = ref(-1)
 const editedItem = ref({
     name: '',
-    calories: 0,
-    fat: 0,
-    carbs: 0,
-    protein: 0,
+    gender: '',
+    rank: '',
+    class: '',
+    abilities: [''],
 })
 const defaultItem = ref({
     name: '',
-    calories: 0,
-    fat: 0,
-    carbs: 0,
-    protein: 0,
+    gender: '',
+    rank: '',
+    class: '',
+    abilities: [''],
 })
 
 const formTitle = computed(() => {
@@ -89,7 +89,7 @@ function deleteItem(item) {
 async function deleteItemConfirm() {
     items.value.splice(editedIndex.value, 1)
 
-    await useFetch(`${config.public.API_URL}/prest/public/heroes?Name=${editedItem.value['Name']}`,
+    await useFetch(`${config.public.API_URL}/prest/public/heroes?HeroID=${editedItem.value['HeroID']}`,
         {
             method: 'DELETE',
         })
@@ -110,23 +110,37 @@ function closeDelete() {
 }
 
 async function save() {
+    let method = 'POST'
+    let endpoint = ''
+    let body = {
+        'Name': editedItem.value['Name'],
+        'Gender': editedItem.value['Gender'],
+        'Rank': editedItem.value['Rank'],
+        'Class': editedItem.value['Class'],
+        'Abilities': editedItem.value['Abilities']
+    }
     if (editedIndex.value > -1) {
-        Object.assign(items.value[editedIndex.value], editedItem.value)
+        method = 'PUT'
+        endpoint = `?HeroID=${editedItem.value["HeroID"]}`
     } else {
-        await useFetch(`${config.public.API_URL}/prest/public/heroes?Sr. No.=${editedIndex.value}`,
-            {
-                headers: { Authorization: `Bearer ${config.public.API_TOKEN}` },
-                body: {
-
-                }
-            }).then(data => {
-
-                if (!data.error.value) {
+        body['HeroID'] = pageCount.value + 1
+    }
+    getPageCount()
+    console.log(body)
+    await useFetch(`${config.public.API_URL}/prest/public/heroes${endpoint}`,
+        {
+            headers: { Authorization: `Bearer ${config.public.API_TOKEN}` },
+            method: method,
+            body: body,
+        }).then(data => {
+            if (!data.error.value) {
+                if (editedIndex.value > -1) {
+                    Object.assign(items.value[editedIndex.value], editedItem.value)
+                } else {
                     items.value.push(editedItem.value)
                 }
-            })
-
-    }
+            }
+        })
     close()
 }
 
@@ -140,9 +154,7 @@ async function loadItems({ page, itemsPerPage }) {
             items.value = value
         })
     getPageCount()
-
 }
-
 
 </script>
 
@@ -151,7 +163,7 @@ async function loadItems({ page, itemsPerPage }) {
         <LoadAndError :error="error"></LoadAndError>
         <v-data-table-server :headers="headers" :items-length="pageCount" v-model:items-per-page="itemsPerPage"
             :items="items" :search="search" item-value="name" @update:options="loadItems" :loading="loading"
-            :sort-by="[{ key: 'Sr. No.', order: 'asc' }]" class="elevation-1">
+            :sort-by="[{ key: 'HeroID', order: 'asc' }]" class="elevation-1">
 
             <template v-slot:top>
 
