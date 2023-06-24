@@ -126,7 +126,6 @@ async function save() {
         body['HeroID'] = pageCount.value + 1
     }
     getPageCount()
-    console.log(body)
     await useFetch(`${config.public.API_URL}/prest/public/heroes${endpoint}`,
         {
             headers: { Authorization: `Bearer ${config.public.API_TOKEN}` },
@@ -168,7 +167,7 @@ async function loadItems({ page, itemsPerPage }) {
             <template v-slot:top>
 
                 <v-toolbar flat>
-                    <v-toolbar-title>My CRUD</v-toolbar-title>
+                    <v-toolbar-title>Heroes list</v-toolbar-title>
                     <v-divider class="mx-4" inset vertical></v-divider>
                     <v-spacer></v-spacer>
                     <v-dialog v-model="dialog" max-width="500px">

@@ -4,9 +4,8 @@
       <v-app-bar title="Heroes Crud" @click.native="openDrawer"></v-app-bar>
       
       <NavigationDrawer />
-      
       <div style="margin: 8%;">
-        <DataTable></DataTable>
+        <p>WIP-Create Heroes</p>
       </div>
 
       <v-main style="min-height: 300px;"></v-main>
@@ -17,12 +16,10 @@
 
 <script>
 import NavigationDrawer from '~/components/NavigationDrawer.vue'
-import DataTable from '~/components/DataTable.vue'
 
 export default {
   components: {
     NavigationDrawer,
-    DataTable,
   },
   methods: {
     openDrawer() {
