@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    
     <v-layout>
       <v-app-bar align="center" title="Heroes Crud" style="position: fixed;"></v-app-bar>
       <NavigationDrawer v-model="drawer" />

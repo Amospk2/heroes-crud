@@ -1,8 +1,8 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-
-  console.log(1)
-  if (!to.fullPath.includes('heroes-crud/create') && !to.fullPath.includes('heroes-crud/edit'))
-  {
+  if (to.fullPath !== '/heroes-crud/create' && to.fullPath !== '/heroes-crud/edit/' && to.fullPath !== '/heroes-crud/home') {
     navigateTo('/heroes-crud/home')
   }
-  })
+
+
+
+})  

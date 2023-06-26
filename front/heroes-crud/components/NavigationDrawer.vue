@@ -16,7 +16,7 @@
       </v-list-item>
     </v-list>
     <v-divider />
-    <v-list :items="items" base-color="white" />
+    <v-list base-color="white" />
   </v-navigation-drawer>
 </template>
 

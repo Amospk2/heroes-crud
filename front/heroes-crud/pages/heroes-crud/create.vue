@@ -3,17 +3,22 @@ export default {
     data() {
         return {
             itens: {
-                name: '',
-                gender: '',
-                rank: '',
-                class: '',
-                abilities: '',
+                'HeroID': '',
+                'Name': '',
+                'Gender': '',
+                'Rank': '',
+                'Class': '',
+                'Abilities': ''
             },
             editedIndex: ref(-1),
             items: ref([]),
             config: useRuntimeConfig(),
-            pageCount: ref(0)
+            pageCount: ref(0),
+            errorMSG: '',
         }
+    },
+    created() {
+        this.getPageCount()
     },
     methods: {
 
@@ -28,21 +33,11 @@ export default {
             this.pageCount = data[0].count
         },
         async save() {
-            await this.getPageCount()
-            let method = 'POST'
-            let endpoint = ''
+
             const editedItem = this.itens
-            let body = {
-                'HeroID': this.pageCount + 1,
-                'Name': editedItem.name,
-                'Gender': editedItem.gender,
-                'Rank': editedItem.rank,
-                'Class': editedItem.class,
-                'Abilities': editedItem.abilities
-            }
-            await $fetch(`${this.config.public.API_URL}/prest/public/heroes${endpoint}`, {
+            await $fetch(`${this.config.public.API_URL}/prest/public/heroes`, {
                 headers: { Authorization: `Bearer ${this.config.public.API_TOKEN}` },
-                method: method,
+                method: 'POST',
                 body: body,
             }).then(data => {
                 if (!data.error) {
@@ -52,9 +47,11 @@ export default {
                         this.items.push(editedItem.value)
                     }
                 }
+            }).catch((error) => {
+                this.errorMSG = "Erro encontrado na requisição."
             })
             close()
-            navigateTo('/')
+            navigateTo('/heroes-crud/home')
         }
     }
 }
@@ -64,24 +61,25 @@ export default {
     <v-container>
         <v-row>
             <v-col align="center">
-                <h1 class="text--underline">Create your hero</h1>
+                <h1 class="text--underline">Creating "{{ itens.Name }}#{{ pageCount }}"</h1>
+                <h4 style="color: red;">{{ errorMSG }}</h4>
             </v-col>
         </v-row>
         <v-row>
-            <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="itens.name" label="Name"></v-text-field>
+            <v-col cols="12" sm="6" md="6">
+                <v-text-field v-model="itens.Name" label="Name"></v-text-field>
             </v-col>
-            <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="itens.gender" label="Gender"></v-text-field>
+            <v-col cols="12" sm="6" md="6">
+                <v-select label="Select" :items="['Male', 'Female']" v-model="itens.Gender"></v-select>
             </v-col>
-            <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="itens.rank" label="Rank"></v-text-field>
+            <v-col cols="12" sm="6" md="6">
+                <v-text-field v-model="itens.Rank" label="Rank"></v-text-field>
             </v-col>
-            <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="itens.class" label="Class"></v-text-field>
+            <v-col cols="12" sm="6" md="6">
+                <v-text-field v-model="itens.Class" label="Class"></v-text-field>
             </v-col>
-            <v-col cols="12" sm="10" md="8">
-                <v-text-field v-model="itens.abilities" label="Abilities"></v-text-field>
+            <v-col cols="12" sm="10" md="12">
+                <v-text-field v-model="itens.Abilities" label="Abilities"></v-text-field>
             </v-col>
         </v-row>
         <v-card-actions>
