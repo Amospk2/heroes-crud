@@ -1,27 +1,18 @@
 <template>
-  <v-card>
-    <v-layout>
-      <v-app-bar title="Heroes Crud" @click.native="openDrawer"></v-app-bar>
-      
-      <NavigationDrawer />
-      
-      <div style="margin: 8%;">
-        <DataTable></DataTable>
-      </div>
+  <v-container>
+    <div style="margin: 3%;">
+      <DataTable></DataTable>
+    </div>
 
-      <v-main style="min-height: 300px;"></v-main>
-
-    </v-layout>
-  </v-card>
+    <v-main style="min-height: 300px;"></v-main>
+  </v-container>
 </template>
 
 <script>
-import NavigationDrawer from '~/components/NavigationDrawer.vue'
 import DataTable from '~/components/DataTable.vue'
 
 export default {
   components: {
-    NavigationDrawer,
     DataTable,
   },
   methods: {

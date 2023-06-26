@@ -110,20 +110,14 @@ function closeDelete() {
 }
 
 async function save() {
-    let method = 'POST'
-    let endpoint = ''
+    let method = 'PUT'
+    let endpoint = `?HeroID=${editedItem.value["HeroID"]}`
     let body = {
         'Name': editedItem.value['Name'],
         'Gender': editedItem.value['Gender'],
         'Rank': editedItem.value['Rank'],
         'Class': editedItem.value['Class'],
         'Abilities': editedItem.value['Abilities']
-    }
-    if (editedIndex.value > -1) {
-        method = 'PUT'
-        endpoint = `?HeroID=${editedItem.value["HeroID"]}`
-    } else {
-        body['HeroID'] = pageCount.value + 1
     }
     getPageCount()
     await useFetch(`${config.public.API_URL}/prest/public/heroes${endpoint}`,
@@ -172,12 +166,8 @@ async function loadItems({ page, itemsPerPage }) {
                     <v-spacer></v-spacer>
                     <v-dialog v-model="dialog" max-width="500px">
                         <template v-slot:activator="{ props }">
-                            <v-btn color="primary" dark class="mb-2" v-bind="props">
-                                New Item
-                            </v-btn>
                             <v-text-field v-model="name" hide-details placeholder="Search name..." class="ma-2"
                                 density="compact"></v-text-field>
-
                         </template>
                         <v-card>
                             <v-card-title>
