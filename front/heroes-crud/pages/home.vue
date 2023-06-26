@@ -1,14 +1,24 @@
-
 <template>
-  <v-card>
-    <v-layout>
-      <v-app-bar title="Heroes Crud"></v-app-bar>
+  <v-container>
+    <div style="margin: 3%;">
+      <DataTable></DataTable>
+    </div>
 
-      <div style="margin: 8%;">
-        <DataTable></DataTable>
-      </div>
-
-      <v-main style="min-height: 300px;"></v-main>
-    </v-layout>
-  </v-card>
+    <v-main style="min-height: 300px;"></v-main>
+  </v-container>
 </template>
+
+<script>
+import DataTable from '~/components/DataTable.vue'
+
+export default {
+  components: {
+    DataTable,
+  },
+  methods: {
+    openDrawer() {
+      this.$refs.drawer.drawer = true;
+    },
+  },
+}
+</script>
