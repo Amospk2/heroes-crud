@@ -8,11 +8,11 @@
     color="#1A73BD"
   >
     <v-list>
-      <v-list-item prepend-icon="mdi-home" base-color="white" @click="goHome">
+      <v-list-item prepend-icon="mdi-home" base-color="white" @click="navigateTo('/heroes-crud/home')">
         <v-list-item-title class="title">Heroes CRUD</v-list-item-title>
-        <v-list-item-subtitle class="d-flex">
-          {{ message }}
-        </v-list-item-subtitle>
+      </v-list-item>
+      <v-list-item prepend-icon="mdi-plus" base-color="white" @click="navigateTo('/heroes-crud/create')">
+        <v-list-item-title class="title">Add Heroes</v-list-item-title>
       </v-list-item>
     </v-list>
     <v-divider />
@@ -24,23 +24,7 @@
 export default {
   data: () => ({
     open: [],
-    items: [
-      {
-        title: 'Add Heroes',
-        value: 'add-heroes',
-        props: {
-          prependIcon: 'mdi-plus',
-          href: '/createHeroes',
-        },
-      },
-    ],
-    message: ' ',
   }),
-  methods: {
-    goHome() {
-      this.$router.push('/home');
-    },
-  },
 }
 </script>
 

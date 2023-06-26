@@ -11,6 +11,6 @@ export default defineNuxtConfig({
     }
   },
   routeRules: {
-    '/': { 'redirect': '/home' }
+    '/': { 'redirect': '/heroes-crud/home' }
   },
 })

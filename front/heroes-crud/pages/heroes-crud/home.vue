@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <div style="margin: 3%;">
+    <div style="margin: 5%;">
       <DataTable></DataTable>
     </div>
 
@@ -9,12 +9,8 @@
 </template>
 
 <script>
-import DataTable from '~/components/DataTable.vue'
 
 export default {
-  components: {
-    DataTable,
-  },
   methods: {
     openDrawer() {
       this.$refs.drawer.drawer = true;
