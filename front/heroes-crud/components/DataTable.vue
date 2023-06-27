@@ -11,7 +11,7 @@ const values = reactive({
     itemsPerPage: 10,
     dialogDelete: false,
     headers: [
-        { title: 'HeroID', align: 'start', sortable: false, key: 'HeroID' },
+        { title: 'HeroID', align: 'start', sortable: true, key: 'HeroID' },
         { title: 'Name', key: 'Name' },
         { title: 'Gender', key: 'Gender' },
         { title: 'Rank', key: 'Rank' },
@@ -53,6 +53,11 @@ onMounted(() => {
 
 })
 
+onBeforeUpdate(()=>{
+    getPageCount()
+    initialize()
+})
+
 watch(name, () => {
     search.value = String(Date.now())
 })
@@ -80,13 +85,21 @@ async function deleteItemConfirm() {
 
 function closeDelete() {
     values.dialogDelete = false
-    values.editedItem = { ...defaultItem }
     values.editedIndex = -1
 }
 
-async function loadItems({ page, itemsPerPage }) {
+async function loadItems({ page, itemsPerPage, sortBy}) {
+    var sort = '-HeroID'
+    if(sortBy.length)
+    {
+        console.log(sortBy[0])
+        sort = `${sortBy[0].order == 'desc' ? '-' : ''}${sortBy[0].key}`
+        console.log(sort)
+    }
+    if(values.itemsPerPage == -1)
+        values.itemsPerPage = values.pageCount
     values.loading = true
-    await $fetch(`${config.public.API_URL}/prest/public/heroes?_page=${page}&_page_size=${values.itemsPerPage}&Name=$like.%25${name.value}%25`,
+    await $fetch(`${config.public.API_URL}/prest/public/heroes?_page=${page}&_page_size=${values.itemsPerPage}&Name=$like.%25${name.value}%25&_order=${sort}`,
         { headers: { Authorization: `Bearer ${config.public.API_TOKEN}` } }).catch((err) => {
             values.error = true
         }).then((value) => {
@@ -103,7 +116,7 @@ async function loadItems({ page, itemsPerPage }) {
         <LoadAndError :error="values.error"></LoadAndError>
         <v-data-table-server :headers="values.headers" :items-length="values.pageCount"
             v-model:items-per-page="values.itemsPerPage" :items="values.items" :search="search" item-value="name"
-            @update:options="loadItems" :loading="values.loading" :sort-by="[{ key: 'HeroID', order: 'asc' }]"
+            @update:options="loadItems" :loading="values.loading"
             class="elevation-1">
 
             <template v-slot:top>

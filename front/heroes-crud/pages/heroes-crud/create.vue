@@ -31,6 +31,7 @@ export default {
             })
 
             this.pageCount = data[0].count
+            this.itens.HeroID = this.pageCount
         },
         async save() {
 
@@ -38,7 +39,7 @@ export default {
             await $fetch(`${this.config.public.API_URL}/prest/public/heroes`, {
                 headers: { Authorization: `Bearer ${this.config.public.API_TOKEN}` },
                 method: 'POST',
-                body: body,
+                body: this.itens,
             }).then(data => {
                 if (!data.error) {
                     if (this.editedIndex > -1) {
@@ -50,7 +51,6 @@ export default {
             }).catch((error) => {
                 this.errorMSG = "Erro encontrado na requisição."
             })
-            close()
             navigateTo('/heroes-crud/home')
         }
     }
