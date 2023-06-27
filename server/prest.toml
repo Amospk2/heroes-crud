@@ -1,7 +1,7 @@
 debug=true
 
 [pg]
-url="postgres://prest:prest@host.docker.internal:5432/prest"
+url="postgres://prest:prest@172.18.0.1:5432/prest"
 
 [ssl]
 mode="disable"
