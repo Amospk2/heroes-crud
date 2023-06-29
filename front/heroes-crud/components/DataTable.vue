@@ -47,13 +47,9 @@ async function getPageCount() {
 
     values.pageCount = data[0].count
 }
-onMounted(() => {
-    getPageCount()
-    initialize()
 
-})
 
-onBeforeUpdate(()=>{
+onBeforeUpdate(() => {
     getPageCount()
     initialize()
 })
@@ -88,15 +84,12 @@ function closeDelete() {
     values.editedIndex = -1
 }
 
-async function loadItems({ page, itemsPerPage, sortBy}) {
+async function loadItems({ page, itemsPerPage, sortBy }) {
     var sort = '-HeroID'
-    if(sortBy.length)
-    {
-        console.log(sortBy[0])
+    if (sortBy.length) {
         sort = `${sortBy[0].order == 'desc' ? '-' : ''}${sortBy[0].key}`
-        console.log(sort)
     }
-    if(values.itemsPerPage == -1)
+    if (values.itemsPerPage == -1)
         values.itemsPerPage = values.pageCount
     values.loading = true
     await $fetch(`${config.public.API_URL}/prest/public/heroes?_page=${page}&_page_size=${values.itemsPerPage}&Name=$like.%25${name.value}%25&_order=${sort}`,
@@ -109,6 +102,9 @@ async function loadItems({ page, itemsPerPage, sortBy}) {
     getPageCount()
 }
 
+
+onHydrated( () => {  getPageCount() })
+
 </script>
 
 <template>
@@ -116,13 +112,12 @@ async function loadItems({ page, itemsPerPage, sortBy}) {
         <LoadAndError :error="values.error"></LoadAndError>
         <v-data-table-server :headers="values.headers" :items-length="values.pageCount"
             v-model:items-per-page="values.itemsPerPage" :items="values.items" :search="search" item-value="name"
-            @update:options="loadItems" :loading="values.loading"
-            class="elevation-1">
+            @update:options="loadItems" :loading="values.loading" class="elevation-1">
 
             <template v-slot:top>
 
                 <v-toolbar flat>
-                    
+
                     <v-toolbar-title>Heroes list</v-toolbar-title>
                     <v-divider class="mx-4" inset vertical></v-divider>
                     <v-spacer></v-spacer>
@@ -144,7 +139,7 @@ async function loadItems({ page, itemsPerPage, sortBy}) {
                         <v-text-field v-model="name" hide-details placeholder="Search name..." class="ma-2"
                             density="compact"></v-text-field>
                     </template>
-                
+
                 </v-dialog>
             </template>
             <template v-slot:item.actions="{ item }">
