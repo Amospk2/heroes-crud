@@ -10,10 +10,7 @@ const values = reactive({
         'Class': '',
         'Abilities': ''
     },
-    editedIndex: 0,
-    items: 0,
     config: useRuntimeConfig(),
-    pageCount: 0,
     errorMSG: '',
 })
 
@@ -22,25 +19,17 @@ async function getPageCount() {
         headers: { Authorization: `Bearer ${values.config.public.API_TOKEN}` }
     })
 
-    values.pageCount = data[0].count
-    values.itens.HeroID = values.pageCount
+    values.itens.HeroID = data[0].count + 1
 }
 async function save() {
-    const editedItem = values.itens
     await $fetch(`${values.config.public.API_URL}/prest/public/heroes`, {
         headers: { Authorization: `Bearer ${values.config.public.API_TOKEN}` },
         method: 'POST',
         body: values.itens,
     }).then(data => {
-        if (!data.error) {
-            if (values.editedIndex > -1) {
-                Object.assign(values.items[values.editedIndex], editedItem.value)
-            } else {
-                values.items.push(editedItem.value)
-            }
+        if (data.error) {
+            values.errorMSG = "Erro encontrado na requisição."
         }
-    }).catch((error) => {
-        values.errorMSG = "Erro encontrado na requisição."
     })
     navigateTo('/heroes-crud/home')
 }
@@ -55,7 +44,7 @@ onHydrated(() => {
     <v-container v-if="isHydrated">
         <v-row>
             <v-col align="center">
-                <h1 class="text--underline">Creating "{{ values.itens.Name }}#{{ values.pageCount }}"</h1>
+                <h1 class="text--underline">Creating "{{ values.itens.Name }}#{{ values.itens.HeroID }}"</h1>
                 <h4 style="color: red;">{{ values.errorMSG }}</h4>
             </v-col>
         </v-row>
