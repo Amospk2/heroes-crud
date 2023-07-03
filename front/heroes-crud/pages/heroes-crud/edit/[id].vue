@@ -59,7 +59,9 @@ async function save() {
 
 }
 
-hidrate()
+onHydrated( () =>{
+    hidrate()
+})
 </script>
 <template>
     <v-container>

@@ -1,24 +1,15 @@
 <script setup>
 import { VDataTableServer } from 'vuetify/labs/VDataTable'
-import { useFetch } from 'nuxt/app';
 
+
+const { headers, api, pk, error } = defineProps(['headers', 'api', 'pk', 'error'])
 const search = ref('')
 const name = ref('')
 const values = reactive({
     pageCount: 0,
     loading: false,
-    error: false,
     itemsPerPage: 10,
     dialogDelete: false,
-    headers: [
-        { title: 'HeroID', align: 'start', sortable: true, key: 'HeroID' },
-        { title: 'Name', key: 'Name' },
-        { title: 'Gender', key: 'Gender' },
-        { title: 'Rank', key: 'Rank' },
-        { title: 'Class', key: 'Class' },
-        { title: 'Abilities', key: 'Abilities' },
-        { title: 'Actions', key: 'actions', sortable: false },
-    ],
     items: [],
     editedIndex: -1,
     editedItem: {
@@ -27,59 +18,25 @@ const values = reactive({
         rank: '',
         class: '',
         abilities: [''],
-    },
-
-
-})
-const config = useRuntimeConfig()
-
-async function initialize() {
-    values.items = await $fetch(`${config.public.API_URL}/prest/public/heroes?_page=1`,
-        { headers: { Authorization: `Bearer ${config.public.API_TOKEN}` } }).catch((err) => {
-            values.error = true
-        })
-}
-
-async function getPageCount() {
-
-    const data = await $fetch(`${config.public.API_URL}/prest/public/heroes?_count=*`,
-        { headers: { Authorization: `Bearer ${config.public.API_TOKEN}` } })
-
-    values.pageCount = data[0].count
-}
-onMounted(() => {
-    getPageCount()
-    initialize()
-
+    }
 })
 
-onBeforeUpdate(()=>{
-    getPageCount()
-    initialize()
-})
 
 watch(name, () => {
     search.value = String(Date.now())
 })
 
+async function deleteItemConfirm() {
+    values.items.splice(values.editedIndex, 1)
+    await api.deleteItemConfirm(values.editedItem)
+    values.pageCount = await api.getPageCount()
+    closeDelete()
+}
 
 function deleteItem(item) {
     values.editedIndex = values.items.indexOf(item)
     values.editedItem = { ...item }
     values.dialogDelete = true
-}
-function goEdit(id) {
-    navigateTo(`/heroes-crud/edit/${id}`)
-}
-async function deleteItemConfirm() {
-    values.items.splice(values.editedIndex, 1)
-
-    await useFetch(`${config.public.API_URL}/prest/public/heroes?HeroID=${values.editedItem['HeroID']}`,
-        {
-            method: 'DELETE',
-        })
-    getPageCount()
-    closeDelete()
 }
 
 
@@ -88,41 +45,39 @@ function closeDelete() {
     values.editedIndex = -1
 }
 
-async function loadItems({ page, itemsPerPage, sortBy}) {
-    var sort = '-HeroID'
-    if(sortBy.length)
-    {
-        console.log(sortBy[0])
-        sort = `${sortBy[0].order == 'desc' ? '-' : ''}${sortBy[0].key}`
-        console.log(sort)
-    }
-    if(values.itemsPerPage == -1)
-        values.itemsPerPage = values.pageCount
+async function loadItems({ page, itemsPerPage, sortBy }) {
     values.loading = true
-    await $fetch(`${config.public.API_URL}/prest/public/heroes?_page=${page}&_page_size=${values.itemsPerPage}&Name=$like.%25${name.value}%25&_order=${sort}`,
-        { headers: { Authorization: `Bearer ${config.public.API_TOKEN}` } }).catch((err) => {
-            values.error = true
-        }).then((value) => {
-            values.loading = false
-            values.items = value
-        })
-    getPageCount()
+    const search = name.value
+    values.items = await api.fetch({ page, itemsPerPage, sortBy, search })
+    values.pageCount = await api.getPageCount()
+    values.loading = false
 }
+
+async function hydratePage() {
+    values.loading = true
+    const data = await api.initialize()
+    values.items = data
+    values.pageCount = await api.getPageCount()
+    values.loading = false
+}
+
+onHydrated(async () => {
+    await hydratePage()
+})
 
 </script>
 
 <template>
     <v-card>
-        <LoadAndError :error="values.error"></LoadAndError>
-        <v-data-table-server :headers="values.headers" :items-length="values.pageCount"
+        <LoadAndError :error="error"></LoadAndError>
+        <v-data-table-server :headers="headers" :items-length="values.pageCount"
             v-model:items-per-page="values.itemsPerPage" :items="values.items" :search="search" item-value="name"
-            @update:options="loadItems" :loading="values.loading"
-            class="elevation-1">
+            @update:options="loadItems" :loading="values.loading" class="elevation-1">
 
             <template v-slot:top>
 
                 <v-toolbar flat>
-                    
+
                     <v-toolbar-title>Heroes list</v-toolbar-title>
                     <v-divider class="mx-4" inset vertical></v-divider>
                     <v-spacer></v-spacer>
@@ -144,11 +99,11 @@ async function loadItems({ page, itemsPerPage, sortBy}) {
                         <v-text-field v-model="name" hide-details placeholder="Search name..." class="ma-2"
                             density="compact"></v-text-field>
                     </template>
-                
+
                 </v-dialog>
             </template>
             <template v-slot:item.actions="{ item }">
-                <v-icon size="small" class="me-2" @click="goEdit(item.raw.HeroID)">
+                <v-icon size="small" class="me-2" @click="api.goEdit(item.raw[pk])">
                     mdi-pencil
                 </v-icon>
                 <v-icon size="small" @click="deleteItem(item.raw)">
