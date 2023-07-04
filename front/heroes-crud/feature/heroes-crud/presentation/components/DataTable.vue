@@ -1,6 +1,6 @@
 <script setup>
+import { onHydrated } from "@/core/composables/vue"
 import { VDataTableServer } from 'vuetify/labs/VDataTable'
-
 
 const { headers, api, pk, error } = defineProps(['headers', 'api', 'pk', 'error'])
 const search = ref('')

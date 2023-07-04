@@ -1,5 +1,5 @@
 <script setup>
-
+import { isHydrated, onHydrated } from "@/core/composables/vue"
 
 const values = reactive({
     itens: {

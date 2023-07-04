@@ -1,7 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
-    '@invictus.codes/nuxt-vuetify'
+    '@invictus.codes/nuxt-vuetify',
+  ],
+  modulesDir: ['~/node_modules'],
+  dir: {
+    pages: 'feature/heroes-crud/presentation/pages',
+    layouts: 'feature/heroes-crud/presentation/layouts',
+    middleware: 'core/middleware',
+    plugins: 'core/plugins',
+  },
+  components: [
+    '~/feature/heroes-crud/presentation/components',
   ],
   routeRules: {
     '/': { 'redirect': '/heroes-crud/home' }

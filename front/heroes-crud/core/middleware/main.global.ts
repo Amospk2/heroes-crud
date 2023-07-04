@@ -1,4 +1,5 @@
-import getInformation from "@/utils/getInformaton"
+import getInformation from "@/core/utils/getInformaton"
+import { isHydrated, onHydrated } from "@/core/composables/vue"
 import type { RouteLocationNormalized } from 'vue-router'
 
 export default defineNuxtRouteMiddleware((to, from) => {

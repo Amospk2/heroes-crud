@@ -1,5 +1,5 @@
 <script setup>
-
+import { onHydrated } from "@/core/composables/vue"
 const values = reactive({
     itens: {
         'HeroID': '',

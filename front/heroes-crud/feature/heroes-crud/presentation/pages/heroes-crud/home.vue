@@ -1,7 +1,7 @@
 
 <script setup>
 import { useFetch } from 'nuxt/app';
-
+import { isHydrated } from "@/core/composables/vue"
 const headers = [
   { title: 'HeroID', align: 'start', sortable: true, key: 'HeroID' },
   { title: 'Name', key: 'Name' },
