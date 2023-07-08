@@ -1,18 +1,16 @@
 <template>
-  <v-navigation-drawer
-    :permanent="!$vuetify.display.mobile"
-    :rail="!$vuetify.display.mobile"
-    :expand-on-hover="!$vuetify.display.mobile"
-    :disable-resize-watcher="!$vuetify.display.mobile"
-    style="position: fixed;"
-    color="#1A73BD"
-  >
+  <v-navigation-drawer :permanent="!$vuetify.display.mobile" :rail="!$vuetify.display.mobile"
+    :expand-on-hover="!$vuetify.display.mobile" :disable-resize-watcher="!$vuetify.display.mobile"
+    style="position: fixed;" color="#1A73BD">
     <v-list>
       <v-list-item prepend-icon="mdi-home" base-color="white" @click="navigateTo('/heroes-crud/home')">
         <v-list-item-title class="title">Heroes CRUD</v-list-item-title>
       </v-list-item>
       <v-list-item prepend-icon="mdi-plus" base-color="white" @click="navigateTo('/heroes-crud/create')">
         <v-list-item-title class="title">Add Heroes</v-list-item-title>
+      </v-list-item>
+      <v-list-item base-color="white" @click="logout()">
+        <v-list-item-title class="title">Sair</v-list-item-title>
       </v-list-item>
     </v-list>
     <v-divider />
@@ -21,10 +19,19 @@
 </template>
 
 <script>
+import { useSessionStorage } from '@vueuse/core';
+
 export default {
   data: () => ({
     open: [],
   }),
+  methods: {
+    logout() {
+      const user = useSessionStorage('current-user')
+      user.value = null
+      window.location.href = '/login'
+    }
+  }
 }
 </script>
 

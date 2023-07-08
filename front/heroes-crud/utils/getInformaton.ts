@@ -9,7 +9,7 @@ export default async function getInformation() {
             } else {
                 reject("Não foi possível obter a string.");
             }
-        }, 50) // timeout for fake request
+        }, 50)
     })
 
 }
