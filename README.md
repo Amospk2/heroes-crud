@@ -32,10 +32,19 @@ https://github.com/Amospk2/heroes-crud
     ./setup.sh
     ```
 
-    Note: O script dentro do setup servirá para configurar o pRest da forma dequada.
+    Note: O script dentro do setup servirá para configurar o PREST da forma dequada.
+
+   E caso haja algum problema no momento de fazer o upload do containter do PREST, basta fazer uma alteração no .toml do PREST alterando a rota de:
+   ```
+   url="postgres://prest:prest@172.18.0.1:5432/prest"
+
+   # para
+
+   url="postgres://prest:prest@host.docker.internal:5432/prest"
+   ```
 
 
-4. Instale as dependências do node:
+5. Instale as dependências do node:
 
 ```bash
 cd front/heroes-crud
@@ -59,7 +68,6 @@ Acesse o projeto no seu navegador:
 http://localhost:3000
 ```
 
-
 # Estrutura do projeto
 
 O projeto possui a seguinte estrutura de arquivos:
@@ -77,3 +85,4 @@ O projeto possui a seguinte estrutura de arquivos:
 # Contribuição
 
 Contribuições são bem-vindas! Se você encontrar algum problema, bug ou tiver alguma melhoria para sugerir, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+Além disso, caso queira adicionar mais dados na base e novas visualizações para os dados, sinsta-se a vontade. Uma indicação de local para obter mais dados é: ```https://www.kaggle.com/datasets/bansodetanishk/one-punch-man-dataset```
